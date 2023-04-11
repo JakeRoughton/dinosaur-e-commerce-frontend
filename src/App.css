@@ -1,0 +1,106 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.gContainer{
+  margin-bottom: 50px;
+}
+
+.Greeting{
+  color: black;
+}
+
+.GreetingP{
+  color:green
+}
+
+.dinoRanchPic{
+  width: 400px;
+}
+
+.email{
+  color:black;
+}
+
+.password{
+  color:black;
+}
+
+.login{
+  color:green;
+}
+
+.registration{
+  color:green;
+}
+
+.videos{
+    color:black;
+    margin-top: 40px;
+}
+
+.catalog{
+  color:green;
+}
+
+.Contact{
+  color:black;
+}
+
+.contactMe{
+  color:black;
+}
+
+.loginGif {
+  height: 200px;
+}
+
+
+.regGif{
+  height: 300px;
+}
+
+
+
+.dinoName{
+  color: black;
+}
+
+.mb-0{
+  color:black;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
