@@ -40,7 +40,7 @@
 }
 
 .videos{
-    color:black;
+    color:green;
     margin-top: 40px;
 }
 
@@ -65,7 +65,13 @@
   height: 300px;
 }
 
+.cancelText{
+  color:black;
+}
 
+.successText{
+  color:black;
+}
 
 .dinoName{
   color: black;
@@ -73,6 +79,30 @@
 
 .mb-0{
   color:black;
+}
+
+#raptorSong{
+  display: flex;
+}
+
+#vladAndNiki{
+  display: flex;
+}
+
+#raptorVid{
+  display: flex;
+}
+
+.product{
+  color:black;
+}
+
+.productName{
+  color:black;
+}
+
+#snapSquad{
+  display:flex;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -89,7 +119,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: rgb(0, 0, 0);
 }
 
 .App-link {

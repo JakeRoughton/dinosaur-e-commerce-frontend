@@ -1,14 +1,24 @@
+import { useState, useContext } from 'react';
 import { useAuth } from "../Hooks/Auth";
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import { Button, Modal } from 'react-bootstrap';
+import { CartContext } from "../CartContext"
+import CartProduct from "./CartProduct"
 
 const NavBar = () => {
+  const cart = useContext(CartContext);
 	//we need this in the navbar, so that we can log out
 	//instead of passing logout through props,
 	// we are importing the useAuth which is Auth's 
 	// contxt which allows us to call logout()
 	const auth = useAuth();
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const productsCount = cart.items.reduce((sum, product)=> sum + product.quantity, 0);
 
 	return (
 		<div>
@@ -41,6 +51,7 @@ const NavBar = () => {
         <Navbar.Text>
             Signed in as: <a href="#login"></a>
           </Navbar.Text>
+          <Button onClick={handleShow}> Cart ({productsCount}) items</Button>
         <button className="btn btn-danger navbar-btn"onClick={()=>{
 				auth.logout()
 			}}>Logout</button>
@@ -48,6 +59,31 @@ const NavBar = () => {
 				auth.logout()
 			}}>Logout</button> */}
       </Navbar>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Shopping Cart</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+            {productsCount > 0 ?
+              <>
+                <p>Items in your cart:</p>
+                {cart.items.map((currentProduct, idx) =>(
+
+                    <CartProduct key={idx} id={currentProduct.id} quantity={currentProduct.quantity}></CartProduct>
+                ))}
+
+                  <h1>Total: {cart.getTotalCost().toFixed(2)}</h1>
+
+                  <Button variant="success">
+                    Purchase items!
+                  </Button>
+              </>
+            
+            :
+                  <h1>There are no items in your cart!</h1>
+            }
+        </Modal.Body>
+      </Modal>
 	</div>
 	);
   }

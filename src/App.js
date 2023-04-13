@@ -5,9 +5,10 @@ import Registration from "./Pages/Registration";
 import Login from "./Pages/Login";
 import Catalog from "./Pages/Catalog";
 import Videos from "./Pages/Videos";
-import ProductDetails from "./Pages/ProductDetails";
 import ShoppingCart from "./Pages/ShoppingCart";
 import Contact from "./Pages/Contact";
+import Cancel from "./Pages/Cancel";
+import Success from "./Pages/Success";
 import './App.css';
 
 function App() {
@@ -33,12 +34,16 @@ function App() {
 			element: <Catalog />
 		},
 		{
-			path: "Videos",
-			element: <Videos />
+			path: "success",
+			element: <Success />
 		},
 		{
-			path: "ProductDetails",
-			element: <ProductDetails />
+			path: "cancel",
+			element: <Cancel />
+		},
+		{
+			path: "Videos",
+			element: <Videos />
 		},
 		{
 			path: "Contact",
