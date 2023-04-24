@@ -17,6 +17,7 @@ const Catalog = () =>{
                 </Col>
                 ))}
             </Row>
+            <Footer/>
 		</div>
     )
 }

@@ -22,7 +22,9 @@ const RaptorVids = () =>{
         <div class="ratio ratio-4x3">
   <iframe id='snapSquad' src="https://www.youtube.com/embed/tzGqyTyg2p8" title="YouTube video" allowfullscreen></iframe>
         </div>
+        <Footer/>
 	</div>
+      
     )
 }
 

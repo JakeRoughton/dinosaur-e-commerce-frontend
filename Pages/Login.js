@@ -42,6 +42,7 @@ export default function Login() {
 			<button onClick={handleSubmit}>Login</button>
       <br/>
         <img className="loginGif" src="https://64.media.tumblr.com/f57d2f5e0ca482086fe3e159a57d51c5/tumblr_npvgkd19u41s5f7v4o1_1280.gifv" alt="regGif"></img>
+		<Footer/>
 		</div>
 	);
 }

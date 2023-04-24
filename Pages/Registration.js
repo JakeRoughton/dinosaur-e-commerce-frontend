@@ -52,6 +52,7 @@ const RegistrationPage = (props) => {
       </button>
       <br/>
         <img className="regGif" src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZTViNWU1ZWJiZmE2NjdiMjkxNDI0MzBlYzVhOGFiYmRjOTljYmUwNiZjdD1n/wl3pyqP3J57oc/giphy.gif" alt="regGif"></img>
+        <Footer/>
     </div>
   );
 };
