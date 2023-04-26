@@ -6,7 +6,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Button, Modal } from 'react-bootstrap';
 import { CartContext } from "../CartContext";
 import CartProduct from "./CartProduct";
-import { removeUserToken } from "../Auth/authLocalStorage";
+import { removeUserToken } from "../Hooks/authLocalStorage";
 import { useNavigate } from "react-router-dom"
 
 const NavBar = () => {
@@ -69,13 +69,14 @@ const NavBar = () => {
             <Nav.Link href="#deets">More deets</Nav.Link>
           </Nav> */}
         </Navbar.Collapse>
-        {/* <Navbar.Text>
-            Signed in as: <a href="#login"></a>
-          </Navbar.Text> */}
+        <Navbar.Text>
+            {/* Signed in as: <a href="#login"></a> */}
+          </Navbar.Text>
           <Button onClick={handleShow}> Cart ({productsCount}) items</Button>
-        <button className="btn btn-danger navbar-btn"onClick={()=>{
+          {isVerified || <button  className="btn btn-danger navbar-btn"onClick={()=>{
 				auth.logout()
-			}}>Logout</button>
+			}}>Logout</button>}
+        
         {/* <button class="btn btn-sm btn-outline-secondary" type="button"onClick={()=>{
 				auth.logout()
 			}}>Logout</button> */}

@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { useAuth } from "../Auth/AuthContext";
+import { useAuth } from "../Hooks/AuthContext";
 
 export default function PrivatePage() {
 	const {isVerified} = useAuth();

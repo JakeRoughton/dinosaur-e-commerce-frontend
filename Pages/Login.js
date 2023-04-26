@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../Auth/AuthContext";
+import { useAuth } from "../Hooks/AuthContext";
+import Footer from "../Components/Footer";
 
 export default function Login() {
 	const [userName, setuserName] = useState("");
@@ -23,7 +24,7 @@ export default function Login() {
 	};
 	return (
 		<div>
-			<h1>Login Page</h1>
+			<h1 className="loginPage">Login Page</h1>
 			<label htmlFor="userName">Username:</label>
 			<input
 				type="text"
@@ -42,7 +43,6 @@ export default function Login() {
 			<button onClick={handleSubmit}>Login</button>
       <br/>
         <img className="loginGif" src="https://64.media.tumblr.com/f57d2f5e0ca482086fe3e159a57d51c5/tumblr_npvgkd19u41s5f7v4o1_1280.gifv" alt="regGif"></img>
-		<Footer/>
 		</div>
 	);
 }

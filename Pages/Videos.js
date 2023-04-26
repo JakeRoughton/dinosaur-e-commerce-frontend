@@ -1,4 +1,5 @@
 import React from 'react'
+import Footer from "../Components/Footer";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const RaptorVids = () =>{
@@ -22,7 +23,6 @@ const RaptorVids = () =>{
         <div class="ratio ratio-4x3">
   <iframe id='snapSquad' src="https://www.youtube.com/embed/tzGqyTyg2p8" title="YouTube video" allowfullscreen></iframe>
         </div>
-        <Footer/>
 	</div>
       
     )

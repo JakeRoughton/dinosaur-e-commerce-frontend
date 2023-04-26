@@ -2,6 +2,7 @@ import { Row, Col } from 'react-bootstrap';
 import { productsArray } from './ProductStore';
 import { useEffect } from "react"
 import DinoCard from '../Components/DinoCard';
+import Footer from "../Components/Footer";
 
 const urlEndpoint = 'http://localhost:5001/all';
 
@@ -17,7 +18,6 @@ const Catalog = () =>{
                 </Col>
                 ))}
             </Row>
-            <Footer/>
 		</div>
     )
 }

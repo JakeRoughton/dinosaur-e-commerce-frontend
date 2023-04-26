@@ -9,6 +9,7 @@ import Contact from "./Pages/Contact";
 import Cancel from "./Pages/Cancel";
 import Success from "./Pages/Success";
 import PrivatePage from "./Pages/PrivatePage";
+import Footer from "./Components/Footer";
 import './App.css';
 
 function App() {
@@ -31,24 +32,28 @@ function App() {
 		},
 		{
 			path: "Catalog",
-			element: <Catalog />
+			element: <PrivatePage />,
+			children: [{
+				index: true,
+				element:<Catalog/>
+			},{
+				path: "success",
+				element: <Success />
+			},
+			{
+				path: "cancel",
+				element: <Cancel />
+			},
+			{
+				path: "Videos",
+				element: <Videos />
+			},
+			{
+				path: "Contact",
+				element: <Contact />		
+			},]
 		},
-		{
-			path: "success",
-			element: <Success />
-		},
-		{
-			path: "cancel",
-			element: <Cancel />
-		},
-		{
-			path: "Videos",
-			element: <Videos />
-		},
-		{
-			path: "Contact",
-			element: <Contact />		
-		},
+		
         
       ],
    },
@@ -57,6 +62,7 @@ function App() {
      return (
 		<div className="App-header">
 			<RouterProvider router={router}/>
+			<Footer />
 		</div>
 	)
 };
