@@ -4,8 +4,10 @@ import NavBar from "../Components/NavBar";
 const GlobalLayout = () => {
 	return (
 		<div>
+		<route>
 			<NavBar/>
 			<Outlet/>
+		</route>
 		</div>
 	)
 }

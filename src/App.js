@@ -5,11 +5,22 @@ import Registration from "./Pages/Registration";
 import Login from "./Pages/Login";
 import Catalog from "./Pages/Catalog";
 import Videos from "./Pages/Videos";
-import ShoppingCart from "./Pages/ShoppingCart";
 import Contact from "./Pages/Contact";
 import Cancel from "./Pages/Cancel";
 import Success from "./Pages/Success";
+import PrivatePage from "./Pages/PrivatePage";
+import Employer from "./Pages/Employer";
+import Individual from "./Pages/Individual";
+import ResourceCenter from "./Pages/ResourceCenter";
+import Testimonials from "./Pages/Testimonials";
+import About from "./Pages/About";
+import Privacy from "./Pages/Privacy";
+import Security from "./Pages/Security";
+import Cookie from "./Pages/Cookie-Declaration";
+import Footer from "./Components/Footer";
+
 import './App.css';
+import Terms from "./Pages/Terms";
 
 function App() {
   const router = createBrowserRouter ([
@@ -30,18 +41,6 @@ function App() {
 			element: <Login />
 		},
 		{
-			path: "Catalog",
-			element: <Catalog />
-		},
-		{
-			path: "success",
-			element: <Success />
-		},
-		{
-			path: "cancel",
-			element: <Cancel />
-		},
-		{
 			path: "Videos",
 			element: <Videos />
 		},
@@ -50,9 +49,58 @@ function App() {
 			element: <Contact />		
 		},
 		{
-			path: "ShoppingCart",
-			element: <ShoppingCart />
+			path: "Employer",
+			element: <Employer />
 		},
+		{
+			path: "Individual",
+			element: <Individual />
+		},		
+		{
+			path: "ResourceCenter",
+			element: <ResourceCenter />
+		},		
+		{
+			path: "Testimonials",
+			element: <Testimonials />
+		},
+		{
+			path: "About",
+			element: <About />
+		},
+		{
+			path: "Terms",
+			element: <Terms />
+		},
+		{
+			path: "Privacy",
+			element: <Privacy />
+		},
+		{
+			path: "Security",
+			element: <Security />
+		},
+		{
+			path: "Cookie",
+			element: <Cookie />
+		},
+		{
+			path: "Catalog",
+			element: <PrivatePage />,
+			children: [{
+				index: true,
+				element:<Catalog/>
+			},{
+				path: "success",
+				element: <Success />
+			},
+			{
+				path: "cancel",
+				element: <Cancel />
+			},
+]
+		},
+		
         
       ],
    },
@@ -61,6 +109,7 @@ function App() {
      return (
 		<div className="App-header">
 			<RouterProvider router={router}/>
+			<Footer />
 		</div>
 	)
 };

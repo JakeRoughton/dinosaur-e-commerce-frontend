@@ -73,7 +73,7 @@ const NavBar = () => {
             {/* Signed in as: <a href="#login"></a> */}
           </Navbar.Text>
           <Button onClick={handleShow}> Cart ({productsCount}) items</Button>
-          {isVerified && <button  className="btn btn-danger navbar-btn"onClick={()=>{
+          {isVerified && <button  className="btn btn-danger navbar-btn"onClick={()=>{ navigate("/")
 				auth.logout()
 			}}>Logout</button>}
         

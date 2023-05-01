@@ -1,9 +1,9 @@
-import { createContext, useState } from "react";
-import { getProductData } from "./Pages/ProductStore";
+import { createContext, useState, useEffect } from "react";
+import axios from "axios";
 
-
- export const CartContext = createContext({
-    items: [ ],
+export const CartContext = createContext({
+    items: [],
+    toys: [],
     getProductQuantity: () => {},
     addOneToCart: () => {},
     removeOneFromCart: () => {},
@@ -11,13 +11,33 @@ import { getProductData } from "./Pages/ProductStore";
     getTotalCost: () => {},
 });
 
+const urlEndpoint = 'http://localhost:5001';    
+
 export function CartProvider({children}){
+    const [toys, setToys] = useState([]);
+
+    function getProductData(id){
+        let productData = toys.find(product => product.id === id)
+    
+        if(productData === undefined){
+            console.log("Product data does not exist for ID" + id)
+            return undefined;
+        }
+    
+        return productData
+    }
+
+    useEffect (()=>{
+        axios.get(`${urlEndpoint}/dinosaurs/all`).then((response)=>{
+            setToys(response.data.Toys);
+        })
+    },[])
     const [cartProducts, setCartProducts] = useState([]);
 
     // Cart data = [ { id: 1 , quantity:2 } ]
 
     function getProductQuantity(id){
-        const quantity = cartProducts.find(product => product.id === id)?.quantity
+        const quantity = cartProducts.find(toy => toy.id === id)?.quantity
       
         if(quantity === undefined){
             return 0;
@@ -41,10 +61,10 @@ export function CartProvider({children}){
     } else{   //Product is in cart
         setCartProducts(
             cartProducts.map(
-                product =>
-                product.id === id                              //If statement
-                ? { ...product, quantity: product.quantity + 1 } //If statement is true
-                : product                                      // If statement is false
+                toy =>
+                toy.id === id                              //If statement
+                ? { ...toy, quantity: toy.quantity + 1 } //If statement is true
+                : toy                                    // If statement is false
             )
         )
     }
@@ -58,10 +78,10 @@ export function CartProvider({children}){
         } else {
             setCartProducts(
                 cartProducts.map(
-                    product =>
-                    product.id === id                              
-                    ? {...product, quantity: product.quantity - 1}
-                    : product                                      
+                    toy =>
+                    toy.id === id                              
+                    ? {...toy, quantity: toy.quantity - 1}
+                    : toy                                      
                 )
             )
         }
@@ -81,20 +101,21 @@ export function CartProvider({children}){
         let totalCost = 0;
         cartProducts.map((cartItem) => {
             const productData = getProductData(cartItem.id);
-            totalCost += (productData.price * cartItem.quantity);
+            totalCost += (productData.Price * cartItem.quantity);
         });
         return totalCost
     }
 
 
     const contextValue = {
-
+        toys,
         items: cartProducts,
         getProductQuantity,
         addOneToCart,
         removeOneFromCart,
         deleteFromCart,
         getTotalCost,
+        getProductData
     }
 
     return(
@@ -103,8 +124,6 @@ export function CartProvider({children}){
         </CartContext.Provider>
     )
 }
-
-export default CartProvider
 
 //Context (cart, addToCart, removeCart)
 //Provider -> gives your React app access to all the things in your context

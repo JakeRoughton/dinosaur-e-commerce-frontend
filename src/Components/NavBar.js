@@ -1,13 +1,22 @@
 import { useState, useContext } from 'react';
-import { useAuth } from "../Hooks/Auth";
+import { useAuth } from "../Hooks/AuthContext";
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Button, Modal } from 'react-bootstrap';
-import { CartContext } from "../CartContext"
-import CartProduct from "./CartProduct"
+import { CartContext } from "../CartContext";
+import CartProduct from "./CartProduct";
+import { removeUserToken } from "../Hooks/authLocalStorage";
+import { useNavigate } from "react-router-dom"
 
 const NavBar = () => {
+  const { isVerified } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = async()=>{
+    const logoutResult = await removeUserToken();
+    if(logoutResult) navigate("/login");
+  }
   const cart = useContext(CartContext);
 	//we need this in the navbar, so that we can log out
 	//instead of passing logout through props,
@@ -17,6 +26,21 @@ const NavBar = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const checkout = async () =>{
+    await fetch('http://localhost:5001/checkout', {
+      method: "POST",
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({items: cart.items})
+    }).then((response)=>{
+      return response.json();
+    }).then((response)=>{
+      if(response.url){
+        window.location.assign(response.url); //Forwarding user to Stripe
+      }
+    })
+  }
 
   const productsCount = cart.items.reduce((sum, product)=> sum + product.quantity, 0);
 
@@ -33,9 +57,6 @@ const NavBar = () => {
 			      <Nav.Link href="/login">Login</Nav.Link>
             <NavDropdown title="More" id="collasible-nav-dropdown">
               <NavDropdown.Item href="/Registration">Register</NavDropdown.Item>
-              <NavDropdown.Item href="/ShoppingCart">
-                Shopping Cart
-              </NavDropdown.Item>
 			      <NavDropdown.Divider />
               <NavDropdown.Item href="Contact">Contact</NavDropdown.Item>
               {/* <NavDropdown.Divider />
@@ -49,17 +70,18 @@ const NavBar = () => {
           </Nav> */}
         </Navbar.Collapse>
         <Navbar.Text>
-            Signed in as: <a href="#login"></a>
+            {/* Signed in as: <a href="#login"></a> */}
           </Navbar.Text>
           <Button onClick={handleShow}> Cart ({productsCount}) items</Button>
-        <button className="btn btn-danger navbar-btn"onClick={()=>{
+          {isVerified && <button  className="btn btn-danger navbar-btn"onClick={()=>{ navigate("/")
 				auth.logout()
-			}}>Logout</button>
+			}}>Logout</button>}
+        
         {/* <button class="btn btn-sm btn-outline-secondary" type="button"onClick={()=>{
 				auth.logout()
 			}}>Logout</button> */}
       </Navbar>
-      <Modal show={show} onHide={handleClose}>
+            <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Shopping Cart</Modal.Title>
         </Modal.Header>
@@ -74,7 +96,7 @@ const NavBar = () => {
 
                   <h1>Total: {cart.getTotalCost().toFixed(2)}</h1>
 
-                  <Button variant="success">
+                  <Button variant="success" onClick={checkout}>
                     Purchase items!
                   </Button>
               </>
@@ -89,3 +111,4 @@ const NavBar = () => {
   }
 
 export default NavBar
+

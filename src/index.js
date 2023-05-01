@@ -3,9 +3,10 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { AuthProvider } from "./Hooks/Auth"
+import { AuthProvider } from "./Hooks/AuthContext"
 import 'bootstrap/dist/css/bootstrap.min.css';
-import CartProvider from './CartContext';
+import { CartProvider } from './CartContext';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

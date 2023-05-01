@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { useAuth } from "../Hooks/Auth";
+import { useState } from "react";
+import { useAuth } from "../Hooks/AuthContext";
 
 const urlEndpoint = process.env.REACT_APP_URL_ENDPOINT
 
@@ -30,22 +30,7 @@ const HomePage = () => {
         if (responseJSON.success) {setMessage(responseJSON.message)}
         else{setMessage("")}
     }
-	
-	useEffect(()=>{
-        // if(auth.userToken)
-	
 
-
-        console.log('message', message)
-		if (auth.userToken !== null && auth.userToken !== undefined) {
-            console.log('hello');
-			fetchMessage()
-		}
-		if (auth.userToken === null) {
-			setMessage("")
-        }
-	    //  [auth.userToken]
-    }) 
 
 
 
@@ -53,7 +38,8 @@ const HomePage = () => {
 		<div className="gContainer">
 			<h1 className="Greeting">Welcome to the Raptor Ranch</h1>
             <p className="GreetingP">We're not extinct, we just moved online!</p>
-            <img className="dinoRanchPic" src = "https://i.imgur.com/x9o4uhu.jpg" alt = "DinoRanchPic"></img>
+            <br/>
+            <img className="dinoRanchPic" src = "https://i.imgur.com/Ms3rPQB.jpg" alt = "DinoRanchPic"></img>
 		</div>
     )
 }

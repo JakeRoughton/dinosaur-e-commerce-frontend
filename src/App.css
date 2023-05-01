@@ -12,15 +12,159 @@
 }
 
 .Greeting{
-  color: black;
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+  color: green;
 }
 
 .GreetingP{
-  color:green
+  display: flex;
+  justify-content: center;
+  color:black;
+  font-weight: bold;
 }
 
 .dinoRanchPic{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 400px;
+  margin-left: 750px;
+}
+
+.employerText{
+  display:flex;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+.employerGif{
+  display: flex;
+  justify-content: center;
+  margin-left: 825px;
+}
+
+.individualText{
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+.individualGif{
+  display: flex;
+  justify-content: center;
+  margin-left: 825px;
+}
+
+.resourceText{
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+.resourceGif{
+  display: flex;
+  justify-content: center;
+  margin-left: 825px;
+}
+
+.testText{
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+.testGif{
+  display: flex;
+  justify-content: center;
+  margin-left: 825px;
+}
+
+.aboutText{
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+.aboutGif{
+  display: flex;
+  justify-content: center;
+  margin-left: 825px;
+}
+
+.termsText{
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+.termsGif{
+  display: flex;
+  justify-content: center;
+  margin-left: 825px;
+}
+
+.privacyText{
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+.privacyGif{
+  display: flex;
+  justify-content: center;
+  margin-left: 825px;
+}
+
+.securityText{
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+.securityGif{
+  display: flex;
+  justify-content: center;
+  margin-left: 825px;
+}
+
+.cookieText{
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+.cookieGif{
+  display: flex;
+  justify-content: center;
+  margin-left: 825px;
+}
+
+.registerDiv{
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+}
+
+.registerContainer{
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loginDiv{
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+}
+
+.loginContainer{
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .email{
@@ -35,25 +179,42 @@
   color:green;
 }
 
-.registration{
+.loginPage{
+  display: flex;
+  justify-content: center;
+  margin-top:70px;
   color:green;
 }
 
+.registration{
+  color:green;
+  margin-top: 70px;
+}
+
 .videos{
-    color:green;
-    margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  color:green;
+  margin-top: 70px;
 }
 
 .catalog{
   color:green;
+  margin-top: 70px;
 }
 
 .Contact{
   color:black;
+  display: flex;
+  justify-content: center;
+  margin-top: 70px;
 }
 
 .contactMe{
   color:black;
+  display: flex;
+  justify-content: center;
+
 }
 
 .loginGif {
@@ -93,6 +254,14 @@
   display: flex;
 }
 
+#card {
+  width: 300px;
+}
+
+#toyImage{
+  width: 300px;
+}
+
 .product{
   color:black;
 }
@@ -105,22 +274,23 @@
   display:flex;
 }
 
+
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
 }
 
-.App-header {
+/* .App-header {
   background-color: white;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: rgb(0, 0, 0);
-}
+} */
 
 .App-link {
   color: #61dafb;
@@ -133,4 +303,6 @@
   to {
     transform: rotate(360deg);
   }
+
+  
 }
