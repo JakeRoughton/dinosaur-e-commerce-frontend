@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useAuth } from "../Hooks/AuthContext";
-import Footer from "../Components/Footer";
 
 const urlEndpoint = process.env.REACT_APP_URL_ENDPOINT
 
@@ -39,6 +38,7 @@ const HomePage = () => {
 		<div className="gContainer">
 			<h1 className="Greeting">Welcome to the Raptor Ranch</h1>
             <p className="GreetingP">We're not extinct, we just moved online!</p>
+            <br/>
             <img className="dinoRanchPic" src = "https://i.imgur.com/Ms3rPQB.jpg" alt = "DinoRanchPic"></img>
 		</div>
     )

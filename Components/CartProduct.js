@@ -1,20 +1,22 @@
 import Button from 'react-bootstrap/Button';
-import { CartContext } from "../CartContext";
+import { CartContext, getProductData } from "../CartContext";
 import { useContext } from "react";
-import { getProductData } from "../Pages/ProductStore";
 
 function CartProduct(props) {
-    const cart = useContext(CartContext);
+    const {getProductData, deleteFromCart} = useContext(CartContext);
     const id = props.id;
     const quantity = props.quantity;
-    const productData = getProductData(id);
+    const Toy = getProductData(id);
+
+    
 
     return(
         <>
-            <h3>{productData.title}</h3>
-            <p>{quantity} total</p>
-            <p>${ (quantity * productData.price).toFixed(2)}</p>
-            <Button size="sm" onClick={() => cart.deleteFromCart(id)}>Remove</Button>
+            <img id='toyImage' src={Toy.Image}/>
+            <h3>{Toy.Name}</h3>
+            <p>Total: {Toy.Price}</p>
+            <p>${ (quantity * Toy.Price).toFixed(2)}</p>
+            <Button size="sm" onClick={() => deleteFromCart(id)}>Remove</Button>
             <hr></hr>
         </>
     )

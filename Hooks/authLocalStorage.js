@@ -4,7 +4,13 @@ const setUserToken = (token)=>{
     localStorage.setItem(TokenHeaderKey, JSON.stringify(token));
 };
 const getUserToken = ()=>{
-    return JSON.parse(localStorage.getItem(TokenHeaderKey));
+    console.log('getUserToken',typeof localStorage.getItem(TokenHeaderKey))
+    if(localStorage.getItem(TokenHeaderKey)!== 'undefined'){
+       return JSON.parse(localStorage.getItem(TokenHeaderKey));
+    }else {
+        return null
+    }
+
 };
 const removeUserToken = ()=>{
     localStorage.removeItem(TokenHeaderKey)

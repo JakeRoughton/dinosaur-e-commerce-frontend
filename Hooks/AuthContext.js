@@ -9,9 +9,7 @@ const AuthProvider = ({ children }) => {
 	const [shouldRefresh, setshouldRefresh] = useState(false);
 	useEffect(() => {
 		const userToken = getUserToken();
-		if (userToken) {
 			setUser(userToken);
-		}
 	}, [shouldRefresh]);
 
     const [isVerified, setIsVerified] = useState(false);
@@ -20,7 +18,8 @@ const AuthProvider = ({ children }) => {
 			const verifiedUser = await verifyUser(user);
 			if (verifiedUser.success) setIsVerified(true);
 		};
-		responseFetch();
+		console.log(user)
+		if(user) responseFetch()
 	}, [user]);
 
 	const login = async (data) => {
@@ -38,11 +37,16 @@ const AuthProvider = ({ children }) => {
 
     const logout = async ()=>{
         setshouldRefresh(true);
-        const logoutResult = await removeUserToken
+        const logoutResult = await removeUserToken()
+		if(logoutResult){
+			setIsVerified(false)
+			setshouldRefresh(false);
+		}
     }
 	const value = useMemo(
 		() => ({
 			user,
+			logout,
 			login,
             isVerified
 		}),
